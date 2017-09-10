@@ -20,6 +20,9 @@ This will automatically install [noble](https://github.com/sandeepmistry/noble).
 			{services: ['heart_rate']}
 		]
 	});
+
+![node-web-bluetooth-request-device](./node-web-bluetooth-request-device.gif)
+	
 	
 Work in progress...
 
