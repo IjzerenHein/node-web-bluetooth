@@ -22,9 +22,10 @@ class InteractiveTermList extends EventEmitter {
 		this.marker = opts.marker || '› ';
 		this.markerLength = opts.markerLength || this.marker.length;
 		this.header = opts.header;
+		this.onkeypress = this.onkeypress.bind(this);
 	}
 
-	onkeypress = (ch, key) => {
+	onkeypress(ch, key) {
 		if (!key) return;
 
 		this.emit('keypress', key, this.selected);
@@ -41,7 +42,7 @@ class InteractiveTermList extends EventEmitter {
 			key.ctrl && this.stop();
 			break;
 		}
-	};
+	}
 
 	add(id, label){
 		if (!this.selected) this.select(id);

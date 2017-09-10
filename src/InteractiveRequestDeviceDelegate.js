@@ -8,9 +8,10 @@ class InteractiveRequestDeviceDelegate extends RequestDeviceDelegate {
 		this._termList = new InteractiveTermList({
 			header: options.header || ('node-web-bluetooth - Pair with device:'.blue.bold)
 		});
+		this._onKeyPress = this._onKeyPress.bind(this);
 	}
 
-	_onKeyPress = (key, id) => {
+	_onKeyPress(key, id) {
 		switch (key.name) {
     case 'return':
 			if (this._termList.selected) {
@@ -22,7 +23,7 @@ class InteractiveRequestDeviceDelegate extends RequestDeviceDelegate {
 			this.reject(new Error('Esc pressed'));
 			break;
     }
-	};
+	}
 
 	onStartScan() {
 		this._termList.on('keypress', this._onKeyPress);

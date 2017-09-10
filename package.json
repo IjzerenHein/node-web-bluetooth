@@ -29,6 +29,7 @@
   },
   "scripts": {
     "lint": "eslint src",
-    "test": "mocha --compilers js:babel-register --require babel-polyfill"
+    "test": "mocha",
+    "test2": "mocha --compilers js:babel-register --require babel-polyfill"
   }
 }
