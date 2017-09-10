@@ -10,7 +10,7 @@ const {
 	uuidToName
 } = require('./utils');
 
-export {
+const Bluetooth = {
 	BluetoothDevice,
 	requestDevice,
 	RequestDeviceDelegate,
@@ -21,3 +21,5 @@ export {
 	serviceToUuid,
 	uuidToName
 };
+
+module.exports = Bluetooth;

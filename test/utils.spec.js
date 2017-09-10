@@ -1,11 +1,11 @@
 /* global describe it */
-import {assert} from 'chai';
-import {
+const {assert} = require('chai');
+const {
 	serviceToUuid,
 	toNobleUuid,
 	fromNobleUuid,
 	uuidToName
-} from '../src';
+} = require('../src');
 
 describe('utils', () => {
 	describe('serviceToUuid', () => {
