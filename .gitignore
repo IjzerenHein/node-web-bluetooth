@@ -1,0 +1,11 @@
+# Dependency directories
+node_modules/
+
+#Build directory
+build/arion-web-sdk.js
+dist/
+
+# Miscellaneous
+.DS_Store
+package-lock.json
+yarn-error.log

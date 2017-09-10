@@ -1,0 +1,34 @@
+{
+  "name": "node-web-bluetooth",
+  "version": "0.0.1",
+  "description": "web-bluetooth API and interactive device picker for node.js",
+  "main": "src/index.js",
+  "repository": "https://github.com/IjzerenHein/node-web-bluetooth",
+  "author": "IjzerenHein <hrutjes@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "colors": "^1.1.2",
+    "keypress": "^0.2.1",
+    "term-canvas": "^0.0.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.24.1",
+    "chai": "^4.1.2",
+    "eslint": "^3.19.0",
+    "mocha": "^3.3.0",
+    "noble": "^1.8.1"
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "test": "mocha --compilers js:babel-register --require babel-polyfill"
+  }
+}
