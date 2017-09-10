@@ -110,8 +110,7 @@ class InteractiveTermList extends EventEmitter {
 	}
 
 	stop() {
-		ctx.reset();
-		process.stdin.pause();
+		stdin.setRawMode(false);
 		stdin.removeListener('keypress', this.onkeypress);
 	}
 

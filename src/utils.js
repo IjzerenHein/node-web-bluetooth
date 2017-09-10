@@ -1,3 +1,4 @@
+/* globals Buffer */
 const noble = require('noble');
 const services = require('noble/lib/services.json');
 
@@ -64,10 +65,23 @@ function toNobleUuid(uuid) {
 	return uuid.replace(/-/g, '');
 }
 
+function toNobleBuffer(data) {
+	if (data instanceof Buffer) {
+		return data;
+	}
+	else if (data instanceof Uint8Array) {
+		return Buffer.from(data.buffer);
+	}
+	else {
+		return Buffer.from(data);
+	}
+}
+
 module.exports = {
 	getAvailability,
 	toNobleUuid,
 	fromNobleUuid,
 	serviceToUuid,
-	uuidToName
+	uuidToName,
+	toNobleBuffer
 };

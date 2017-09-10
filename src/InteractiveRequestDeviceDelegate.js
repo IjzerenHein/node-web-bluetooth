@@ -15,11 +15,13 @@ class InteractiveRequestDeviceDelegate extends RequestDeviceDelegate {
 		switch (key.name) {
     case 'return':
 			if (this._termList.selected) {
+				this._termList.stop();
 				const device = this._devices.find((device) => device.id === this._termList.selected);
 				this.resolve(device);
 			}
 			break;
 		case 'escape':
+			this._termList.stop();
 			this.reject(new Error('Esc pressed'));
 			break;
     }

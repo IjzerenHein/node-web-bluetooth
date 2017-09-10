@@ -5,7 +5,7 @@ const {
 	toNobleUuid,
 	fromNobleUuid,
 	uuidToName
-} = require('../src');
+} = require('../src/Bluetooth');
 
 describe('utils', () => {
 	describe('serviceToUuid', () => {

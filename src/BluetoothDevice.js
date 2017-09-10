@@ -1,16 +1,16 @@
-const EventEmitter = require('events');
+const EventTarget = require('./EventTarget');
 const {fromNobleUuid, uuidToName} = require('./utils');
 const BluetoothRemoteGATTServer = require('./BluetoothRemoteGATTServer');
 
 /* events
-	ongattserverdisconnected
-	onserviceadded
-	onservicechanged
-	onserviceremoved
-	oncharacteristicvaluechanged
+	[X] gattserverdisconnected
+	[ ] serviceadded
+	[ ] servicechanged
+	[ ] serviceremoved
+	[ ] characteristicvaluechanged
 */
 
-class BluetoothDevice extends EventEmitter {
+class BluetoothDevice extends EventTarget {
 	constructor(peripheral) {
 		super();
 		this._peripheral = peripheral;

@@ -1,6 +1,6 @@
 /* global describe it */
 /* const {assert} = require('chai');
-const {requestDevice} = require('../src');
+const {requestDevice} = require('../src/Bluetooth');
 
 describe('requestDevice', () => {
 	it('Should work :)', async () => {
