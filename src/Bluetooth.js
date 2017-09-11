@@ -2,8 +2,8 @@ const BluetoothDevice = require('./BluetoothDevice');
 const requestDevice = require('./requestDevice');
 const RequestDeviceDelegate = require('./RequestDeviceDelegate');
 const InteractiveRequestDeviceDelegate = require('./InteractiveRequestDeviceDelegate');
+const getAvailability = require('./getAvailability');
 const {
-	getAvailability,
 	toNobleUuid,
 	fromNobleUuid,
 	serviceToUuid,

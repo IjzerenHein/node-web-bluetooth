@@ -1,5 +1,6 @@
 const noble = require('noble');
-const {getAvailability, serviceToUuid, toNobleUuid} = require('./utils');
+const {serviceToUuid, toNobleUuid} = require('./utils');
+const getAvailability = require('./getAvailability');
 const BluetoothDevice = require('./BluetoothDevice');
 const InteractiveRequestDeviceDelegate = require('./InteractiveRequestDeviceDelegate');
 
