@@ -2,9 +2,9 @@
 [![Build Status](https://travis-ci.org/IjzerenHein/node-web-bluetooth.svg?branch=master)](https://travis-ci.org/IjzerenHein/node-web-bluetooth)
 
 
-web-bluetooth API and interactive device picker for node.js, using the awesome [noble](https://github.com/sandeepmistry/noble) package
+Web Bluetooth API and interactive device picker for node.js, using the awesome [noble](https://github.com/sandeepmistry/noble) package
 
-# Work in progress, come back later
+# Work in progress...
 
 - [ ] Bluetooth.referringDevice
 - [x] Bluetooth.getAvailability()
