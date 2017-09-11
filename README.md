@@ -6,6 +6,50 @@ web-bluetooth API and interactive device picker for node.js, using the awesome [
 
 # Work in progress, come back later
 
+- [ ] Bluetooth.referringDevice
+- [x] Bluetooth.getAvailability()
+- [x] Bluetooth.requestDevice()
+- [ ] Bluetooth.onavailabilitychanged
+- [x] BluetoothDevice.id
+- [x] BluetoothDevice.name
+- [x] BluetoothDevice.gatt
+- [x] BluetoothDevice.uuids
+- [ ] BluetoothDevice.watchAdvertisements()
+- [ ] BluetoothDevice.gattserverdisconnected
+- [ ] BluetoothDevice.serviceadded
+- [ ] BluetoothDevice.servicechanged
+- [ ] BluetoothDevice.serviceremoved
+- [ ] BluetoothDevice.characteristicvaluechanged
+- [x] BluetoothRemoteGATTServer.device
+- [x] BluetoothRemoteGATTServer.connected
+- [x] BluetoothRemoteGATTServer.connect()
+- [x] BluetoothRemoteGATTServer.disconnect()
+- [x] BluetoothRemoteGATTServer.getPrimaryService()
+- [ ] BluetoothRemoteGATTServer.getPrimaryServices()
+- [x] BluetoothRemoteGATTService.uuid
+- [ ] BluetoothRemoteGATTService.isPrimary
+- [x] BluetoothRemoteGATTService.device
+- [x] BluetoothRemoteGATTService.getCharacteristic()
+- [ ] BluetoothRemoteGATTService.getCharacteristics()
+- [ ] BluetoothRemoteGATTService.getIncludedService()
+- [ ] BluetoothRemoteGATTService.getIncludedServices()
+- [x] BluetoothRemoteGATTCharacteristic.service
+- [x] BluetoothRemoteGATTCharacteristic.uuid
+- [ ] BluetoothRemoteGATTCharacteristic.properties
+- [ ] BluetoothRemoteGATTCharacteristic.value
+- [ ] BluetoothRemoteGATTCharacteristic.getDescriptor()
+- [ ] BluetoothRemoteGATTCharacteristic.getDescriptors()
+- [ ] BluetoothRemoteGATTCharacteristic.readValue()
+- [x] BluetoothRemoteGATTCharacteristic.writeValue()
+- [x] BluetoothRemoteGATTCharacteristic.startNotifications()
+- [x] BluetoothRemoteGATTCharacteristic.stopNotifications()
+- [x] BluetoothRemoteGATTCharacteristic.characteristicvaluechanged
+- [ ] BluetoothRemoteGATTDescriptor.characteristic
+- [ ] BluetoothRemoteGATTDescriptor.uuid
+- [ ] BluetoothRemoteGATTDescriptor.value
+- [ ] BluetoothRemoteGATTDescriptor.readValue
+- [ ] BluetoothRemoteGATTDescriptor.writeValue
+
 ## Installation
 
 	npm install node-web-bluetooth
