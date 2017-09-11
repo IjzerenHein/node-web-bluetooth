@@ -1,5 +1,5 @@
 ![node-web-bluetooth logo](./node-web-bluetooth.png)
-[![Build Status](https://travis-ci.org/ijzerenhein/node-web-bluetooth.svg?branch=master)](https://travis-ci.org/ijzerenhein/node-web-bluetooth)
+[![Build Status](https://travis-ci.org/IjzerenHein/node-web-bluetooth.svg?branch=master)](https://travis-ci.org/IjzerenHein/node-web-bluetooth)
 
 
 web-bluetooth API and interactive device picker for node.js, using the awesome [noble](https://github.com/sandeepmistry/noble) package
