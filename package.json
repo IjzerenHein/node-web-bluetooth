@@ -6,6 +6,13 @@
   "repository": "https://github.com/IjzerenHein/node-web-bluetooth",
   "author": "IjzerenHein <hrutjes@gmail.com>",
   "license": "MIT",
+  "files": [
+    "src",
+    "cli"
+  ],
+  "engines": {
+    "node": ">= 6.0.0"
+  },
   "dependencies": {
     "colors": "^1.1.2",
     "keypress": "^0.2.1",
