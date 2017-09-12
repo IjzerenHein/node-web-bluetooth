@@ -56,7 +56,7 @@ async function requestDevice({ // eslint-disable-line
 	const serviceUUIDs = [];
 	filters.forEach((filter) => {
 		if (filter.services) {
-			filters.services.forEach((service) => {
+			filter.services.forEach((service) => {
 				serviceUUIDs.push(toNobleUuid(serviceToUuid(service)));
 			});
 		}
