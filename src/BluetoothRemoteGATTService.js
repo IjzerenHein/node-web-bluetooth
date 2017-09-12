@@ -1,5 +1,5 @@
 const EventTarget = require('./EventTarget');
-const {toNobleUuid} = require('./utils');
+const {toNobleUuid, fromNobleUuid} = require('./utils');
 const BluetoothRemoteGATTCharacteristic = require('./BluetoothRemoteGATTCharacteristic');
 
 /* events
@@ -38,13 +38,15 @@ class BluetoothRemoteGATTService extends EventTarget {
 					if (error) {
 						reject(error);
 					}
+					else if (!characteristics.length) {
+						reject(new Error('characteristic not found: ' + characteristicUuid));
+					}
 					else {
-						const char = new BluetoothRemoteGATTCharacteristic(
+						resolve(new BluetoothRemoteGATTCharacteristic(
 							characteristics[0],
 							this,
 							characteristicUuid
-						);
-						resolve(char);
+						));
 					}
 				}
 			);
@@ -52,7 +54,25 @@ class BluetoothRemoteGATTService extends EventTarget {
 	}
 
 	getCharacteristics(characteristicUuid) {
-		throw new Error('getCharacteristics is not yet supported');
+		return new Promise((resolve, reject) => {
+			this._service.discoverCharacteristics(
+				characteristicUuid ? [toNobleUuid(characteristicUuid)] : undefined,
+				(error, characteristics) => {
+					if (error) {
+						reject(error);
+					}
+					else {
+						resolve(characteristics.map((characteristic) => {
+							return new BluetoothRemoteGATTCharacteristic(
+								characteristic,
+								this,
+								fromNobleUuid(characteristic.uuid)
+							);
+						}));
+					}
+				}
+			);
+		});
 	}
 
 	getIncludedService(serviceUuid) {
