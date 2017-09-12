@@ -22,4 +22,9 @@ const Bluetooth = {
 	uuidToName
 };
 
+global.navigator = {
+	...global.navigator,
+	bluetooth: Bluetooth
+};
+
 module.exports = Bluetooth;
