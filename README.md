@@ -98,10 +98,10 @@ navigator.bluetooth.requestDevice({
 of the core API's are done but more testing is still needed. 
 Go ahead and give it a try, and let us know if you run into any problems.
 
-- [ ] ~~Bluetooth.referringDevice~~ (not relevant)
-- [x] Bluetooth.getAvailability()
 - [x] Bluetooth.requestDevice()
+- [x] Bluetooth.getAvailability()
 - [x] Bluetooth.availabilitychanged
+- [ ] ~~Bluetooth.referringDevice~~ (not relevant)
 - [x] BluetoothDevice.id
 - [x] BluetoothDevice.name
 - [x] BluetoothDevice.gatt
@@ -141,7 +141,13 @@ Go ahead and give it a try, and let us know if you run into any problems.
 - [x] BluetoothRemoteGATTDescriptor.value
 - [x] BluetoothRemoteGATTDescriptor.readValue
 - [x] BluetoothRemoteGATTDescriptor.writeValue
+- [ ] Translate characteric names to UUIDs
+- [ ] Translate descriptor names to UUIDs
 
+## Known issues
+
+Due to an implementation restriction in noble, calling `BluetoothRemoteGATTService.getCharacteristic(s)` multiple times doesn't work correctly. If you need to obtain multiple characterstics, then do it using a 
+single call to `BluetoothRemoteGATTService.getCharacteristics`.
 
 ## Resources
 
