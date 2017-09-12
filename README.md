@@ -21,9 +21,9 @@ async function connect() {
     ]
   });
   const server = await device.connect();
-  const service = server.getPrimaryService('heart_rate');
-  const char = service.getCharacteristic('heart_rate_measurement');
-  char.startNotifications();
+  const service = await server.getPrimaryService('heart_rate');
+  const char = await service.getCharacteristic('heart_rate_measurement');
+  await char.startNotifications();
   char.on('characteristicvaluechanged', (data) => {
     // parse heart-rate data here
   });
