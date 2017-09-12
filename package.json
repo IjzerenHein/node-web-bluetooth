@@ -7,9 +7,9 @@
   "author": "IjzerenHein <hrutjes@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
     "colors": "^1.1.2",
     "keypress": "^0.2.1",
+    "noble": "^1.8.1",
     "term-canvas": "^0.0.5"
   },
   "devDependencies": {
@@ -24,8 +24,7 @@
     "babel-register": "^6.24.1",
     "chai": "^4.1.2",
     "eslint": "^3.19.0",
-    "mocha": "^3.3.0",
-    "noble": "^1.8.1"
+    "mocha": "^3.3.0"
   },
   "scripts": {
     "lint": "eslint src",
