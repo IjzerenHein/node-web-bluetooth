@@ -79,6 +79,20 @@ async function connect() {
 connect();
 ```
 
+## `navigator.bluetooth` compatibility
+
+In order to achieve full code compatibility with browser code, `navigator.bluetooth` is injected into the global scope.
+In case the `navigator` object already existed, it is 
+extended with the `bluetooth` object. Causing this to work:
+
+```js
+require('node-web-bluetooth');
+
+navigator.bluetooth.requestDevice({
+	...
+});
+```
+
 # Work in progress...
 **node-web-bluetooth** is being built as you read this. Nearly all 
 of the core API's are done but more testing is still needed. 
