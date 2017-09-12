@@ -30,13 +30,13 @@ Web Bluetooth API and interactive device picker for node.js, using the awesome [
 - [ ] BluetoothRemoteGATTService.isPrimary
 - [x] BluetoothRemoteGATTService.device
 - [x] BluetoothRemoteGATTService.getCharacteristic()
-- [ ] BluetoothRemoteGATTService.getCharacteristics()
+- [x] BluetoothRemoteGATTService.getCharacteristics()
 - [ ] BluetoothRemoteGATTService.getIncludedService()
 - [ ] BluetoothRemoteGATTService.getIncludedServices()
 - [x] BluetoothRemoteGATTCharacteristic.service
 - [x] BluetoothRemoteGATTCharacteristic.uuid
 - [ ] BluetoothRemoteGATTCharacteristic.properties
-- [ ] BluetoothRemoteGATTCharacteristic.value
+- [x] BluetoothRemoteGATTCharacteristic.value
 - [ ] BluetoothRemoteGATTCharacteristic.getDescriptor()
 - [ ] BluetoothRemoteGATTCharacteristic.getDescriptors()
 - [ ] BluetoothRemoteGATTCharacteristic.readValue()
