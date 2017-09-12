@@ -28,7 +28,7 @@ class BluetoothRemoteGATTCharacteristic extends EventTarget {
 	}
 
 	get value() {
-		throw new Error('not yet implemented');
+		return this._value;
 	}
 
 	getDescriptor(descriptorUuid) {
@@ -82,8 +82,11 @@ class BluetoothRemoteGATTCharacteristic extends EventTarget {
 		});
 	}
 
-	_onData(data) {
-		console.info('onData: ', data);
+	_onData(buffer) {
+		this._value = new DataView(buffer.buffer);
+		this.emit('characteristicvaluechanged', {
+			target: this
+		});
 	}
 }
 
