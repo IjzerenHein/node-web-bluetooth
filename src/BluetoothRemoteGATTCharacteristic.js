@@ -1,9 +1,6 @@
 const EventTarget = require('./EventTarget');
-const {toNobleBuffer} = require('./utils');
-
-/* events
-	[ ] characteristicvaluechanged
-*/
+const {toNobleBuffer, fromNobleUuid} = require('./utils');
+const BluetoothRemoteGATTDescriptor = require('./BluetoothRemoteGATTDescriptor');
 
 class BluetoothRemoteGATTCharacteristic extends EventTarget {
 	constructor(characteristic, service, uuid) {
@@ -24,7 +21,7 @@ class BluetoothRemoteGATTCharacteristic extends EventTarget {
 	}
 
 	get properties() {
-		throw new Error('not yet implemented');
+		return this._service.properties;
 	}
 
 	get value() {
@@ -32,15 +29,61 @@ class BluetoothRemoteGATTCharacteristic extends EventTarget {
 	}
 
 	getDescriptor(descriptorUuid) {
-		throw new Error('not yet implemented');
+		return new Promise((resolve, reject) => {
+			this._characteristic.discoverDescriptors(
+				(error, descriptors) => {
+					if (error) {
+						reject(error);
+					}
+					else if (!descriptors.length) {
+						reject(new Error('no descriptors found'));
+					}
+					else {
+						// TODO filter on descriptorUuid
+						resolve(new BluetoothRemoteGATTDescriptor(
+							descriptors[0],
+							this,
+							fromNobleUuid(descriptors[0].uuid)
+						));
+					}
+				}
+			);
+		});
 	}
 
 	getDescriptors(descriptorUuid) {
-		throw new Error('not yet implemented');
+		return new Promise((resolve, reject) => {
+			this._characteristic.discoverDescriptors(
+				(error, descriptors) => {
+					if (error) {
+						reject(error);
+					}
+					else {
+						resolve(descriptors.map((descriptor) => {
+							return new BluetoothRemoteGATTDescriptor(
+								descriptor,
+								this,
+								fromNobleUuid(descriptor.uuid)
+							);
+						}));
+					}
+				}
+			);
+		});
 	}
 
 	readValue() {
-		throw new Error('not yet implemented');
+		return new Promise((resolve, reject) => {
+			this._characteristic.read((error, buffer) => {
+				if (error) {
+					reject(error);
+				}
+				else {
+					this._value = new DataView(buffer.buffer);
+					resolve(this._value);
+				}
+			});
+		});
 	}
 
 	writeValue(value) {

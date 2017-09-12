@@ -1,4 +1,4 @@
-const {serviceToUuid, toNobleUuid} = require('./utils');
+const {serviceToUuid, toNobleUuid, fromNobleUuid} = require('./utils');
 const BluetoothRemoteGATTService = require('./BluetoothRemoteGATTService');
 
 class BluetoothRemoteGATTServer {
@@ -62,8 +62,27 @@ class BluetoothRemoteGATTServer {
 		});
 	}
 
-	getPrimaryServices(serviceUuid) {
-		throw new Error('getPrimaryServices is not yet supported');
+	getPrimaryServices(service) {
+		return new Promise((resolve, reject) => {
+			this._device._peripheral.discoverServices(
+				service ? [toNobleUuid(serviceToUuid(service))] : undefined,
+				(error, services) => {
+					if (error) {
+						reject(error);
+					}
+					else {
+						resolve(services.map((service) => {
+							return new BluetoothRemoteGATTService(
+								service,
+								this,
+								fromNobleUuid(service.uuid),
+								true
+							);
+						}));
+					}
+				}
+			);
+		});
 	}
 }
 

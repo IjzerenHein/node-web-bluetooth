@@ -1,5 +1,5 @@
 const EventTarget = require('./EventTarget');
-const {toNobleUuid, fromNobleUuid} = require('./utils');
+const {serviceToUuid, toNobleUuid, fromNobleUuid} = require('./utils');
 const BluetoothRemoteGATTCharacteristic = require('./BluetoothRemoteGATTCharacteristic');
 
 /* events
@@ -14,7 +14,7 @@ class BluetoothRemoteGATTService extends EventTarget {
 		super();
 		this._service = service;
 		this._device = device;
-		this._uuid = uuid;
+		this._uuid = service.uuid;
 		this._isPrimary = isPrimary;
 	}
 
@@ -75,12 +75,50 @@ class BluetoothRemoteGATTService extends EventTarget {
 		});
 	}
 
-	getIncludedService(serviceUuid) {
-		throw new Error('getIncludedService is not yet supported');
+	getIncludedService(service) {
+		return new Promise((resolve, reject) => {
+			const uuid = serviceToUuid(service);
+			this._service.discoverIncludedServices(
+				[toNobleUuid(uuid)],
+				(error, services) => {
+					if (error) {
+						reject(error);
+					}
+					else {
+						const service = new BluetoothRemoteGATTService(
+							services[0],
+							this.device,
+							uuid,
+							false
+						);
+						resolve(service);
+					}
+				}
+			);
+		});
 	}
 
-	getIncludedServices(serviceUuid) {
-		throw new Error('getIncludedServices is not yet supported');
+	getIncludedServices(service) {
+		return new Promise((resolve, reject) => {
+			this._service.discoverIncludedServices(
+				service ? [toNobleUuid(serviceToUuid(service))] : undefined,
+				(error, services) => {
+					if (error) {
+						reject(error);
+					}
+					else {
+						resolve(services.map((service) => {
+							return new BluetoothRemoteGATTService(
+								service,
+								this,
+								fromNobleUuid(service.uuid),
+								false
+							);
+						}));
+					}
+				}
+			);
+		});
 	}
 }
 

@@ -1,30 +1,23 @@
-const BluetoothDevice = require('./BluetoothDevice');
+const noble = require('noble');
+const EventTarget = require('./EventTarget');
 const requestDevice = require('./requestDevice');
 const RequestDeviceDelegate = require('./RequestDeviceDelegate');
 const InteractiveRequestDeviceDelegate = require('./InteractiveRequestDeviceDelegate');
 const getAvailability = require('./getAvailability');
-const {
-	toNobleUuid,
-	fromNobleUuid,
-	serviceToUuid,
-	uuidToName
-} = require('./utils');
 
-const Bluetooth = {
-	BluetoothDevice,
-	requestDevice,
-	RequestDeviceDelegate,
-	InteractiveRequestDeviceDelegate,
-	getAvailability,
-	toNobleUuid,
-	fromNobleUuid,
-	serviceToUuid,
-	uuidToName
-};
+const bluetooth = new EventTarget();
+noble.on('stateChange', (state) => {
+	bluetooth.emit('onavailabilitychanged', state === 'poweredOn');
+});
+
+bluetooth.requestDevice = requestDevice;
+bluetooth.RequestDeviceDelegate = RequestDeviceDelegate;
+bluetooth.InteractiveRequestDeviceDelegate = InteractiveRequestDeviceDelegate;
+bluetooth.getAvailability = getAvailability;
 
 global.navigator = {
 	...global.navigator,
-	bluetooth: Bluetooth
+	bluetooth: bluetooth
 };
 
-module.exports = Bluetooth;
+module.exports = bluetooth;
