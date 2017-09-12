@@ -15,21 +15,21 @@ This will automatically install [noble](https://github.com/sandeepmistry/noble).
 const Bluetooth	= require('node-web-bluetooth');
 
 async function connect() {
-	const device = await Bluetooth.requestDevice({
-		filters: [
-			{services: ['heart_rate']}
-		]
-	});
-	const server = await device.connect();
-	const service = server.getPrimaryService('heart_rate');
-	const char = service.getCharacteristic('heart_rate_measurement');
-	char.startNotifications();
-	char.on('characteristicvaluechanged', (data) => {
-		// parse heart-rate data here
-	});
-	...
-	await char.stopNotifications();
-	await server.disconnect();
+  const device = await Bluetooth.requestDevice({
+    filters: [
+      {services: ['heart_rate']}
+    ]
+  });
+  const server = await device.connect();
+  const service = server.getPrimaryService('heart_rate');
+  const char = service.getCharacteristic('heart_rate_measurement');
+  char.startNotifications();
+  char.on('characteristicvaluechanged', (data) => {
+    // parse heart-rate data here
+  });
+  ...
+  await char.stopNotifications();
+  await server.disconnect();
 }
 connect();
 ```
@@ -47,34 +47,34 @@ const Bluetooth	= require('node-web-bluetooth');
 
 class SelectFirstFoundDevice extends Bluetooth.RequestDeviceDelegate {
 
-	// Select first device found
-	onAddDevice(device) {
-		this.resolve(device);
-	}
-	onUpdateDevice(device) {
-		// Called whenever new advertisement data was received
-		// for the device
-	}
+  // Select first device found
+  onAddDevice(device) {
+    this.resolve(device);
+  }
+  onUpdateDevice(device) {
+    // Called whenever new advertisement data was received
+    // for the device
+  }
 
-	// Time-out when device hasn't been found in 20 secs
-	onStartScan() {
-		this._timer = setTimeout(() => {
-			this.reject(new Error('No device found'));
-		}, 20000);
-	}
-	onStopScan() {
-		if (this._timer) clearTimeout(this._timer);
-	}
+  // Time-out when device hasn't been found in 20 secs
+  onStartScan() {
+    this._timer = setTimeout(() => {
+	    this.reject(new Error('No device found'));
+    }, 20000);
+  }
+  onStopScan() {
+    if (this._timer) clearTimeout(this._timer);
+  }
 }
 
 async function connect() {
-	const device = await Bluetooth.requestDevice({
-		filters: [
-			{services: ['heart_rate']}
-		],
-		delegate: new SelectFirstFoundDevice()
-	});
-	...
+  const device = await Bluetooth.requestDevice({
+    filters: [
+      {services: ['heart_rate']}
+    ],
+    delegate: new SelectFirstFoundDevice()
+  });
+  ...
 }
 connect();
 ```
@@ -84,7 +84,7 @@ connect();
 of the core API's are done but more testing is still needed. 
 Go ahead and give it a try, and let us know if you run into any problems.
 
-- [ ] ~~Bluetooth.referringDevice~~ (doesn't make sense)
+- [ ] ~~Bluetooth.referringDevice~~ (not relevant)
 - [x] Bluetooth.getAvailability()
 - [x] Bluetooth.requestDevice()
 - [x] Bluetooth.availabilitychanged
@@ -138,7 +138,3 @@ Go ahead and give it a try, and let us know if you run into any problems.
 ## License
 
 [MIT](./LICENSE.txt)
-
-
-
-
