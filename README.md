@@ -36,7 +36,7 @@ connect();
 
 ![node-web-bluetooth-request-device](./node-web-bluetooth-request-device.gif)
 
-## Programatically selecting a device
+## Programmatically selecting a device
 
 By default, `Bluetooth.requestDevice` shows an interactive list
 with all the discovered devices it has found. To programmatically
