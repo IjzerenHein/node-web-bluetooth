@@ -1,5 +1,5 @@
 const EventTarget = require('./EventTarget');
-const {toNobleBuffer, fromNobleUuid} = require('./utils');
+const {descriptorToUuid, toNobleBuffer, fromNobleUuid} = require('./utils');
 const BluetoothRemoteGATTDescriptor = require('./BluetoothRemoteGATTDescriptor');
 
 class BluetoothRemoteGATTCharacteristic extends EventTarget {
@@ -28,8 +28,15 @@ class BluetoothRemoteGATTCharacteristic extends EventTarget {
 		return this._value;
 	}
 
-	getDescriptor(descriptorUuid) {
+	getDescriptor(descriptor) {
 		return new Promise((resolve, reject) => {
+			let uuid; // eslint-disable-line
+			try {
+				uuid = descriptorToUuid(descriptor);
+			}
+			catch (err) {
+				return reject(err);
+			}
 			this._characteristic.discoverDescriptors(
 				(error, descriptors) => {
 					if (error) {
@@ -39,7 +46,7 @@ class BluetoothRemoteGATTCharacteristic extends EventTarget {
 						reject(new Error('no descriptors found'));
 					}
 					else {
-						// TODO filter on descriptorUuid
+						// TODO filter on uuid
 						resolve(new BluetoothRemoteGATTDescriptor(
 							descriptors[0],
 							this,
@@ -51,8 +58,17 @@ class BluetoothRemoteGATTCharacteristic extends EventTarget {
 		});
 	}
 
-	getDescriptors(descriptorUuid) {
+	getDescriptors(descriptor) {
 		return new Promise((resolve, reject) => {
+			let uuid; // eslint-disable-line
+			if (descriptor) {
+				try {
+					uuid = descriptorToUuid(descriptor);
+				}
+				catch (err) {
+					return reject(err);
+				}
+			}
 			this._characteristic.discoverDescriptors(
 				(error, descriptors) => {
 					if (error) {

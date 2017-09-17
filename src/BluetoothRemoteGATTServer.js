@@ -41,12 +41,21 @@ class BluetoothRemoteGATTServer {
 
 	getPrimaryService(service) {
 		return new Promise((resolve, reject) => {
-			const uuid = serviceToUuid(service);
+			let uuid;
+			try {
+				uuid = serviceToUuid(service);
+			}
+			catch (err) {
+				return reject(err);
+			}
 			this._device._peripheral.discoverServices(
 				[toNobleUuid(uuid)],
 				(error, services) => {
 					if (error) {
 						reject(error);
+					}
+					else if (!services.length) {
+						reject(new Error('Service "' + service + '" not found'));
 					}
 					else {
 						const service = new BluetoothRemoteGATTService(
@@ -64,8 +73,17 @@ class BluetoothRemoteGATTServer {
 
 	getPrimaryServices(service) {
 		return new Promise((resolve, reject) => {
+			let uuid;
+			if (service) {
+				try {
+					uuid = serviceToUuid(service);
+				}
+				catch (err) {
+					return reject(err);
+				}
+			}
 			this._device._peripheral.discoverServices(
-				service ? [toNobleUuid(serviceToUuid(service))] : undefined,
+				uuid ? [toNobleUuid(uuid)] : undefined,
 				(error, services) => {
 					if (error) {
 						reject(error);

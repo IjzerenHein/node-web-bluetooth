@@ -1,5 +1,7 @@
 /* globals Buffer */
 const services = require('noble/lib/services.json');
+const characteristics = require('noble/lib/characteristics.json');
+const descriptors = require('noble/lib/descriptors.json');
 
 function serviceToUuid(service) {
 	if (typeof service === 'number') {
@@ -14,6 +16,36 @@ function serviceToUuid(service) {
 		if (s.type === type) return key;
 	}
 	throw new Error('Unknown service specified: ' + service);
+}
+
+function characteristicToUuid(characteristic) {
+	if (typeof characteristic === 'number') {
+		return characteristic.toString(16);
+	}
+	else if (characteristic.length === 36) {
+		return characteristic;
+	}
+	const type = 'org.bluetooth.characteristic.' + characteristic;
+	for (const key in characteristics) {
+		const c = characteristics[key];
+		if (c.type === type) return key;
+	}
+	throw new Error('Unknown characteristic specified: ' + characteristic);
+}
+
+function descriptorToUuid(descriptor) {
+	if (typeof descriptor === 'number') {
+		return descriptor.toString(16);
+	}
+	else if (descriptor.length === 36) {
+		return descriptor;
+	}
+	const type = 'org.bluetooth.descriptor.' + descriptor;
+	for (const key in descriptors) {
+		const d = descriptors[key];
+		if (d.type === type) return key;
+	}
+	throw new Error('Unknown descriptor specified: ' + descriptor);
 }
 
 function uuidToName(uuid) {
@@ -61,6 +93,8 @@ module.exports = {
 	toNobleUuid,
 	fromNobleUuid,
 	serviceToUuid,
+	characteristicToUuid,
+	descriptorToUuid,
 	uuidToName,
 	toNobleBuffer
 };

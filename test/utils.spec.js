@@ -2,6 +2,8 @@
 const {assert} = require('chai');
 const {
 	serviceToUuid,
+	characteristicToUuid,
+	descriptorToUuid,
 	toNobleUuid,
 	fromNobleUuid,
 	uuidToName
@@ -15,11 +17,41 @@ describe('utils', () => {
 		it('Should convert standard service "heart_rate"', () => {
 			assert.equal(serviceToUuid('heart_rate'), '180d');
 		});
-		it('Should convert numerical 16-bit service UUID', () => {
+		it('Should convert numerical 16-bit UUID', () => {
 			assert.equal(serviceToUuid(0x1802), '1802');
 		});
 		it('Should throw when invalid standard service is specified', () => {
 			assert.throws(() => serviceToUuid('heart_rate_invalid_service'));
+		});
+	});
+
+	describe('characteristicToUuid', () => {
+		it('Should convert valid UUID', () => {
+			assert.equal(characteristicToUuid('00000001-1212-efde-1523-785feabcd124'), '00000001-1212-efde-1523-785feabcd124');
+		});
+		it('Should convert standard characteristic "heart_rate_measurement"', () => {
+			assert.equal(characteristicToUuid('heart_rate_measurement'), '2a37');
+		});
+		it('Should convert numerical 16-bit UUID', () => {
+			assert.equal(characteristicToUuid(0x2a37), '2a37');
+		});
+		it('Should throw when invalid standard characteristic is specified', () => {
+			assert.throws(() => characteristicToUuid('heart_rate_invalid_characteristic'));
+		});
+	});
+
+	describe('descriptorToUuid', () => {
+		it('Should convert valid UUID', () => {
+			assert.equal(descriptorToUuid('00000001-1212-efde-1523-785feabcd124'), '00000001-1212-efde-1523-785feabcd124');
+		});
+		it('Should convert standard descriptor "environmental_sensing_measurement"', () => {
+			assert.equal(descriptorToUuid('environmental_sensing_measurement'), '290c');
+		});
+		it('Should convert numerical 16-bit UUID', () => {
+			assert.equal(descriptorToUuid(0x290c), '290c');
+		});
+		it('Should throw when invalid standard descriptor is specified', () => {
+			assert.throws(() => descriptorToUuid('environmental_invalid_descriptor'));
 		});
 	});
 
