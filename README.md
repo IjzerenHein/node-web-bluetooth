@@ -79,6 +79,21 @@ async function connect() {
 connect();
 ```
 
+## Customizing the interactive device picker
+
+The header-text and the formatting of the interactive device picker are customizable. To fully customize it, derive a class from it and override its methods.
+
+```js
+const Bluetooth	= require('node-web-bluetooth');
+
+const device = Bluetooth.requestDevice({
+	delegate: new Bluetooth.InteractiveRequestDeviceDelegate({
+		header: 'Set your custom header text here',
+		format: (device) => `${device.id} - ${device.name}`
+	})
+});
+```
+
 ## `navigator.bluetooth` compatibility
 
 In order to achieve full code compatibility with browser code, `navigator.bluetooth` is injected into the global scope.

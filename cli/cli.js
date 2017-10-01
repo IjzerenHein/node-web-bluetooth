@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+/* globals process */
 const Bluetooth = require('../src/Bluetooth');
 
 const UUID = Object.freeze({
@@ -47,8 +48,10 @@ Bluetooth.requestDevice()
 	console.info('notifications started');
 	// console.info('ready, disconnecting...');
 	// characteristic.service.device.gatt.disconnect();
+	process.exit();
 }, (error) => {
-	console.error('could not connect: ', error);
+	console.error('could not connect: ', error.message);
+	process.exit(-1);
 });
 /* }).then(server => {
 	return server.getPrimaryService(UUID.SERVICE);

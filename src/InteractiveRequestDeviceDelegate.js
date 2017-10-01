@@ -1,13 +1,18 @@
 const InteractiveTermList = require('./InteractiveTermList');
 const RequestDeviceDelegate = require('./RequestDeviceDelegate');
 
+function formatDevice(device) {
+	return device.toString();
+}
+
 class InteractiveRequestDeviceDelegate extends RequestDeviceDelegate {
 	constructor(options = {}) {
 		super();
 		this._devices = [];
 		this._termList = new InteractiveTermList({
-			header: options.header || ('node-web-bluetooth - Pair with device:'.blue.bold)
+			header: options.header || ('node-web-bluetooth - Pair with device:'.blue.bold),
 		});
+		this._format = options.format || formatDevice;
 		this._onKeyPress = this._onKeyPress.bind(this);
 	}
 
@@ -34,11 +39,11 @@ class InteractiveRequestDeviceDelegate extends RequestDeviceDelegate {
 
 	onAddDevice(device) {
 		this._devices.push(device);
-		this._termList.add(device.id, device.toString());
+		this._termList.add(device.id, this._format(device));
 	}
 
 	onUpdateDevice(device) {
-		this._termList.update(device.id, device.toString());
+		this._termList.update(device.id, this._format(device));
 	}
 
 	onRemoveDevice(device) {
