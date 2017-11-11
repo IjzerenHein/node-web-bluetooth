@@ -2,6 +2,14 @@
   "name": "node-web-bluetooth",
   "version": "0.0.7",
   "description": "Web Bluetooth API and interactive device picker for node.js",
+  "keywords": [
+    "webbluetooth",
+    "node-web-bluetooth",
+    "web-bluetooth",
+    "bluetooth-node",
+    "node-bluetooth",
+    "web-buetooth-node"
+  ],
   "main": "src/Bluetooth.js",
   "repository": "https://github.com/IjzerenHein/node-web-bluetooth",
   "author": "IjzerenHein <hrutjes@gmail.com>",
