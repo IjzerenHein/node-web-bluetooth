@@ -1,6 +1,6 @@
 {
   "name": "node-web-bluetooth",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Web Bluetooth API and interactive device picker for node.js",
   "keywords": [
     "webbluetooth",
@@ -42,7 +42,7 @@
     "mocha": "^3.3.0"
   },
   "scripts": {
-  	"start": "cli/cli.js",
+    "start": "cli/cli.js",
     "lint": "eslint src",
     "test": "mocha",
     "test2": "mocha --compilers js:babel-register --require babel-polyfill"
