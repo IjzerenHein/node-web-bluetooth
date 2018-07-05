@@ -20,7 +20,7 @@ async function connect() {
 			{services: ['heart_rate']}
 		]
 	});
-	const server = await device.connect();
+	const server = await device.gatt.connect();
 	const service = await server.getPrimaryService('heart_rate');
 	const char = await service.getCharacteristic('heart_rate_measurement');
 	await char.startNotifications();
