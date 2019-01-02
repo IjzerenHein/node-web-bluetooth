@@ -108,10 +108,7 @@ navigator.bluetooth.requestDevice({
 });
 ```
 
-# Work in progress...
-**node-web-bluetooth** is being built as you read this. Nearly all 
-of the core API's are done but more testing is still needed. 
-Go ahead and give it a try, and let us know if you run into any problems.
+# Supported APIs
 
 - [x] Bluetooth.requestDevice()
 - [x] Bluetooth.getAvailability()
