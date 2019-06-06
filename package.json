@@ -1,6 +1,6 @@
 {
 	"name": "node-web-bluetooth",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Web Bluetooth API and interactive device picker for node.js",
 	"keywords": [
 		"webbluetooth",
