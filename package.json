@@ -19,7 +19,7 @@
 		"cli"
 	],
 	"engines": {
-		"node": ">= 6.0.0"
+		"node": ">= 8.0.0"
 	},
 	"dependencies": {
 		"colors": "^1.3.3",
