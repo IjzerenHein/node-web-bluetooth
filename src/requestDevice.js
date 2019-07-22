@@ -90,6 +90,7 @@ async function requestDevice({ // eslint-disable-line
 		resultDevice = await delegate.getDevice();
 	}
 	catch (err) {
+		noble.removeListener('discover', onDiscover);
 		throw err;
 	}
 	noble.removeListener('discover', onDiscover);
