@@ -28,23 +28,18 @@
 		"term-canvas": "^0.0.5"
 	},
 	"devDependencies": {
-		"babel-core": "^6.24.1",
+		"@babel/plugin-proposal-class-properties": "^7.5.5",
+		"@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+		"@babel/plugin-transform-async-to-generator": "^7.5.0",
+		"@babel/preset-env": "^7.5.5",
 		"babel-eslint": "^10.0.2",
-		"babel-plugin-external-helpers": "^6.22.0",
-		"babel-plugin-transform-async-to-generator": "^6.24.1",
-		"babel-plugin-transform-class-properties": "^6.24.1",
-		"babel-plugin-transform-object-rest-spread": "^6.23.0",
-		"babel-polyfill": "^6.23.0",
-		"babel-preset-env": "^1.6.0",
-		"babel-register": "^6.24.1",
 		"chai": "^4.2.0",
 		"eslint": "^6.1.0",
-		"mocha": "^3.5.0"
+		"mocha": "^6.2.0"
 	},
 	"scripts": {
 		"start": "cli/cli.js",
 		"lint": "eslint src",
-		"test": "mocha",
-		"test2": "mocha --compilers js:babel-register --require babel-polyfill"
+		"test": "mocha"
 	}
 }
