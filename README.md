@@ -145,6 +145,8 @@ navigator.bluetooth.requestDevice({
 - [x] BluetoothRemoteGATTCharacteristic.getDescriptors()
 - [x] BluetoothRemoteGATTCharacteristic.readValue()
 - [x] BluetoothRemoteGATTCharacteristic.writeValue()
+- [ ] BluetoothRemoteGATTCharacteristic.writeValueWithResponse()
+- [ ] BluetoothRemoteGATTCharacteristic.writeValueWithoutResponse()
 - [x] BluetoothRemoteGATTCharacteristic.startNotifications()
 - [x] BluetoothRemoteGATTCharacteristic.stopNotifications()
 - [x] BluetoothRemoteGATTCharacteristic.characteristicvaluechanged
