@@ -1,4 +1,4 @@
-const noble = require('noble');
+const noble = require('@abandonware/noble');
 const {serviceToUuid, toNobleUuid} = require('./utils');
 const getAvailability = require('./getAvailability');
 const BluetoothDevice = require('./BluetoothDevice');

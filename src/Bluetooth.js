@@ -1,4 +1,4 @@
-const noble = require('noble');
+const noble = require('@abandonware/noble');
 const EventTarget = require('./EventTarget');
 const requestDevice = require('./requestDevice');
 const RequestDeviceDelegate = require('./RequestDeviceDelegate');

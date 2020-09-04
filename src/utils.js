@@ -1,7 +1,7 @@
 /* globals Buffer */
-const services = require('noble/lib/services.json');
-const characteristics = require('noble/lib/characteristics.json');
-const descriptors = require('noble/lib/descriptors.json');
+const services = require('@abandonware/noble/lib/services.json');
+const characteristics = require('@abandonware/noble/lib/characteristics.json');
+const descriptors = require('@abandonware/noble/lib/descriptors.json');
 
 function serviceToUuid(service) {
 	if (typeof service === 'number') {
