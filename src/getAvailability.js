@@ -1,4 +1,4 @@
-const noble = require('noble');
+const noble = require('@abandonware/noble');
 
 function getAvailability() {
 	if (noble.state !== 'unknown') {
