@@ -32,7 +32,7 @@ class BluetoothRemoteGATTCharacteristic extends EventTarget {
 		return new Promise((resolve, reject) => {
 			let uuid; // eslint-disable-line
 			try {
-				uuid = descriptorToUuid(descriptor);
+				uuid = descriptorToUuid(descriptor); // eslint-disable-line
 			}
 			catch (err) {
 				return reject(err);
@@ -63,7 +63,7 @@ class BluetoothRemoteGATTCharacteristic extends EventTarget {
 			let uuid; // eslint-disable-line
 			if (descriptor) {
 				try {
-					uuid = descriptorToUuid(descriptor);
+					uuid = descriptorToUuid(descriptor); // eslint-disable-line
 				}
 				catch (err) {
 					return reject(err);
