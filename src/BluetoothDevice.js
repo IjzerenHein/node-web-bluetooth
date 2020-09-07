@@ -14,7 +14,7 @@ class BluetoothDevice extends EventTarget {
 	constructor(peripheral) {
 		super();
 		this._peripheral = peripheral;
-		this._uuids = this._peripheral.advertisement.serviceUuids.map(fromNobleUuid);
+		this._uuids = peripheral.advertisement.serviceUuids ? peripheral.advertisement.serviceUuids.map(fromNobleUuid) : [];
 		this._gatt = new BluetoothRemoteGATTServer(this);
 	}
 
