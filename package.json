@@ -22,7 +22,7 @@
 		"node": ">= 8.0.0"
 	},
 	"dependencies": {
-		"@abandonware/noble": "^1.9.2-9",
+		"@abandonware/noble": "^1.9.2-10",
 		"colors": "^1.4.0",
 		"keypress": "^0.2.1",
 		"term-canvas": "^0.0.5"
