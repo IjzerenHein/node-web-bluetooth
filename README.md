@@ -7,7 +7,7 @@ Web Bluetooth API and interactive device picker for node.js, using the awesome [
 
 	npm install node-web-bluetooth
 	
-This will automatically install [noble](https://github.com/abandonware/noble). Depending on your system environment and the tools installed, nobble may or may not work out of the box. Please visit [https://github.com/abandonware/noble](https://github.com/abandonware/noble) on how to install all the prerequisites for noble.
+This will automatically install [noble](https://github.com/abandonware/noble). Depending on your system environment and the tools installed, noble may or may not work out of the box. Please visit [https://github.com/abandonware/noble](https://github.com/abandonware/noble) on how to install all the prerequisites for noble.
 
 ## Usage
 
