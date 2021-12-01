@@ -1,3 +1,9 @@
+# THIS REPOSITORY IS NO LONGER MAINTAINED
+
+Looking for an alternative? Please have a look at [node-ble](https://github.com/chrvadala/node-ble).
+
+If you are interested in maintaining this repository (and taking ownership of it), please reach out to me [here](mailto:hrutjes@gmail.com).
+
 ![node-web-bluetooth logo](./node-web-bluetooth.png)
 [![Build Status](https://travis-ci.org/IjzerenHein/node-web-bluetooth.svg?branch=master)](https://travis-ci.org/IjzerenHein/node-web-bluetooth) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/IjzerenHein/node-web-bluetooth/master/LICENSE.txt)
 
